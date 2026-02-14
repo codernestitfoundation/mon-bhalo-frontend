@@ -3,9 +3,15 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import { RouterProvider } from 'react-router'
 import { router } from './routes/index.tsx'
+import { HelmetProvider } from 'react-helmet-async'
+import { ThemeProvider } from './providers/theme.provider.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
+    <ThemeProvider defaultTheme='system' storageKey='vite-ui-theme'>
+    <HelmetProvider>
     <RouterProvider router={router} />
+    </HelmetProvider>
+    </ThemeProvider>
   </StrictMode>,
 )
